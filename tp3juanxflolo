@@ -1,0 +1,48 @@
+
+html=open('informe.html','w')
+dia=['Lunes','Martes','Miercoles','Jueves','Viernes']
+ventastotales=[0,0,0,0,0]
+cantidadventas=[0,0,0,0,0]
+pos_max = 0
+dia_posmax = 0
+exit=input ('Desea salir?Presione 0,Presione cualquier otro numero si desea seguir: ')
+while	(exit!=0):
+	for i in range(5):
+	    venta=1
+	    acumulacion=0
+	    cantidad=0
+	    print 'Ingrese las ventas del dia ',dia[i],': '
+	    print 'Aprete 0 si desea pasar de dia'
+	    while (venta!=0):
+		    venta = input('Ingrese la venta: ')
+		    acumulacion=acumulacion+venta
+		    cantidad +=1
+		    if venta > pos_max:
+		        pos_max=venta
+		        dia_posmax= dia[i] 
+	    ventastotales[i]=acumulacion
+	    cantidadventas[i]=cantidad-1    
+	    print 'El valor de ventas total del dia ',dia[i],'es: ',ventastotales[i]
+	    print 'La cantidad de ventas del dia ',dia[i],'es: ',cantidadventas[i]
+	    print '############################################################################'
+	valorventastotal= ventastotales[0]+ventastotales[1]+ventastotales[2]+ventastotales[3]+ventastotales[4]
+	cantidadventastotal=cantidadventas[0]+cantidadventas[1]+cantidadventas[2]+cantidadventas[3]+cantidadventas[4]
+	print 'El valor total de las ventas de la semana es: ',valorventastotal
+	print 'El promedio de ventas es: ',valorventastotal/5
+	print 'La mayor venta fue: ',pos_max,'El dia : ',dia_posmax
+	print 'La cantidad de ventas fueron: ',cantidadventastotal
+	print '################################################################################'
+	exit=input ('Desea salir?Presione 0,Presione cualquier otro numero si desea seguir: ')
+print>>html,'<font color = "blue">'
+print>>html,'<body background="unnamed.png">'
+print>>html,'<h1>REPORTE DE VENTAS</h1>'
+for j in range(5):
+	print>>html,'<h2><u>',dia[j],'</u></h2>'
+	print>>html,'<p><b>Ventas totales del dia: ',ventastotales[i],'</b></p>'
+	print>>html,'<p><b>Cantidad de ventas del dia: ',cantidadventas[i],'</b></p>'
+	print>>html,'<p><b>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p></b>'
+print>>html,'<h2>REPORTE DE LA SEMANA</h2>'
+print>>html,'<p><b>El valor total de las ventas de la semana es: ',valorventastotal,'</p></b>'
+print>>html,'<p><b>Promedio de Ventas: ',valorventastotal/5,'</p></b>'
+print>>html,'<p><b>La mayor venta fue: ',pos_max,' ,El dia: ',dia_posmax,'</p></b>'
+print>>html,'<p><b>La cantidad de ventas fueron: ',cantidadventastotal,'</p></b>'
